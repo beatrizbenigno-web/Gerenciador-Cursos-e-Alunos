@@ -55,7 +55,7 @@ create table matricula (
 	frequencia INT default 0,
 	situacao VARCHAR(20) default 'CURSANDO',
 
-	-- aqui ele automaticamente diz como está a situação da matricula
+	-- aqui ele automaticamente diz como está a situação da matricula do aluno, caso ninguém descreva outra situação.
 	
 	constraint pk_matricula primary key (id_matricula),
 	

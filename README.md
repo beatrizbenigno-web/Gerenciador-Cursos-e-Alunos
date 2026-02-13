@@ -1,4 +1,4 @@
-# Sistema de Gerenciamento de Cursos de Alunos (SQL)
+## Sistema de Gerenciamento de Cursos de Alunos (SQL)
 
 Este projeto consiste na modelagem e implementação de um banco de dados relacional para gerenciar uma instituição de ensino. O sistema controla **Cursos, Alunos, Turmas e Matrículas**, permitindo o registro de notas, frequência e situações acadêmicas.
 

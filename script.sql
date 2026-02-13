@@ -6,6 +6,9 @@ create table curso (
 	
 	constraint pk_curso primary key (codigo),
 	constraint ck_carga_horaria check (carga_horaria > 0)
+	-- usamos constraint para que a chave seja gerada com o nome que atribuimos a ela. 
+	-- assim futuramente caso ocorra algum erro saberei onde foi.
+	-- // o check tem a função de garantir que a carga horária seja sempre acima de 0.
 );
 
 comment on table curso is 'Catálogo de cursos disponíveis.';
@@ -16,6 +19,8 @@ create table aluno (
 	nome VARCHAR(150) not null,
 	email VARCHAR(150),
 	status_academico VARCHAR(50) default 'ATIVO',
+	-- o DEFAULT tem a função de atribuir automaticamente o status do aluno, caso niguém escreva. 
+	-- então já fica como ATIVO.
 	
 	constraint pk_aluno primary key (matricula),
 	constraint uq_aluno_email unique (email)
@@ -32,7 +37,7 @@ create table turma (
 	
 	constraint pk_turma primary key (id_turma),
 	constraint ck_vagas check (vagas_totais >= 0),
-	
+	-- em vagas totais, o valor pode ser maior ou igual a 0.
 	constraint fk_turma_curso foreign key (cod_curso)
 		references curso (codigo)
 		on update cascade 
@@ -48,12 +53,15 @@ create table matricula (
 	nota_final DECIMAL(5, 2) default 0.00,
 	frequencia INT default 0,
 	situacao VARCHAR(20) default 'CURSANDO',
+
+	-- aqui ele automaticamente diz como está a situação da matricula
 	
 	constraint pk_matricula primary key (id_matricula),
 	
 	-- regras de negócio
 	constraint ck_nota_valida check (nota_final >= 0 and nota_final <= 100),
 	constraint ck_frequencia_valida check (frequencia >= 0 and frequencia <= 100),
+	constraint ck_situacao_valida check (situacao in ('CURSANDO', 'APROVADO', 'REPROVADO', 'TRANCADO'))
 	constraint uq_aluno_turma unique (id_turma, mat_aluno),
 	
 	-- chaves estrangeiras
@@ -92,3 +100,4 @@ select * from matricula;
 select * from aluno;
 select * from curso;
 select * from turma;
+

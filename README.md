@@ -35,7 +35,7 @@ Para testar este banco de dados, você precisará de uma ferramenta SQL (recomen
 ### Passo a Passo:
 
 1.  **Clone ou baixe** este repositório.
-2.  Abra o arquivo `script_completo.sql` no DBeaver.
+2.  Abra o arquivo `script-gerenciador.sql` no DBeaver.
 3.  Conecte-se ao seu banco de dados PostgreSQL.
 4.  **Execute o script inteiro de uma vez** (No DBeaver, use o atalho `Alt + X`).
 

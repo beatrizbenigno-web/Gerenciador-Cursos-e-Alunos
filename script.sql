@@ -8,6 +8,8 @@ create table curso (
 	constraint ck_carga_horaria check (carga_horaria > 0)
 );
 
+comment on table curso is 'Catálogo de cursos disponíveis.';
+
 
 create table aluno (
 	matricula VARCHAR(20) not null,
@@ -19,6 +21,7 @@ create table aluno (
 	constraint uq_aluno_email unique (email)
 );
 
+comment on table aluno is 'Registro de dados dos estudantes.';
 
 create table turma (
 	id_turma INT generated always as identity,
@@ -36,6 +39,7 @@ create table turma (
 		on delete restrict
 );
 
+comment on table turma is 'Oferta de disciplinas em períodos específicos.';
 
 create table matricula (
 	id_matricula INT generated always as identity,
@@ -64,9 +68,27 @@ create table matricula (
 		on delete cascade
 );
 
+comment on table matricula is 'Registro do vínculo entre alunos e turmas (notas e frequêcia).'
 
+-- Criar o Curso
+insert into curso (codigo, nome, carga_horaria)
+values ('SQL-Banco de Dados', 'Introdução ao SQL', 45);
 
+-- Criar o Aluno
+insert into aluno (matricula, nome, email, status_academico)
+values ('A0001', 'Beatriz Benigno', 'beatrizbenigno@gmail.com', 'ATIVO');
 
+-- Criar a Turma (Ligada ao curso SQL-Banco de Dados)
+-- O banco vai gerar automaticamente o id_turma como 1
+insert into turma (cod_curso, periodo, dias_horarios, vagas_totais)
+values ('SQL-Banco de Dados', '2026.1', '{"seg": "09:00"}', 20);
 
+-- Matricular o Aluno na Turma
+-- Estamos a assumir que a turma criada acima recebeu o id 1
+insert into matricula (id_turma, mat_aluno, nota_final, frequencia)
+values (1, 'A0001', 95.5, 100);
 
-
+select * from matricula;
+select * from aluno;
+select * from curso;
+select * from turma;

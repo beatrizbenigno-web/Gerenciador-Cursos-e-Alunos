@@ -24,7 +24,7 @@ create table aluno (
 	
 	constraint pk_aluno primary key (matricula),
 	constraint uq_aluno_email unique (email)
-	CONSTRAINT ck_status_aluno CHECK (status_academico IN ('ATIVO', 'INATIVO', 'TRANCADO', 'FORMADO'))
+	CONSTRAINT ck_status_aluno check (status_academico IN ('ATIVO', 'INATIVO', 'TRANCADO', 'FORMADO'))
 );
 
 comment on table aluno is 'Registro de dados dos estudantes.';

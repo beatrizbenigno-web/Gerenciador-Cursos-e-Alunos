@@ -20,7 +20,7 @@ O sistema é composto por 4 tabelas principais relacionais:
 4.  Matrícula: Tabela associativa que vincula Alunos às Turmas, armazenando notas e frequência.
 
 ### Regras de Negócio Implementadas (Constraints)
-- Integridade Referencial:Chaves Estrangeiras (FK) configuradas com ON UPDATE CASCADE (para manter a consistência ao alterar códigos) e ON DELETE RESTRICT (para impedir a exclusão acidental de dados vinculados).
+- Integridade Referencial: Chaves Estrangeiras (FK) configuradas com ON UPDATE CASCADE (para manter a consistência ao alterar códigos) e ON DELETE RESTRICT (para impedir a exclusão acidental de dados vinculados).
 - Validação de Dados:
     * Notas devem ser entre 0 e 100.
     * Frequência deve ser entre 0 e 100.

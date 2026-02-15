@@ -1,4 +1,3 @@
-
 create table curso (
 	codigo VARCHAR(20) not null,
 	nome VARCHAR(150) not null,
@@ -6,6 +5,7 @@ create table curso (
 	
 	constraint pk_curso primary key (codigo),
 	constraint ck_carga_horaria check (carga_horaria > 0)
+	
 	-- usamos constraint para que a chave seja gerada com o nome que atribuimos a ela. 
 	-- assim futuramente caso ocorra algum erro saberei onde foi.
 	-- // o check tem a função de garantir que a carga horária seja sempre acima de 0.
@@ -20,7 +20,7 @@ create table aluno (
 	-- então já fica como ATIVO.
 	
 	constraint pk_aluno primary key (matricula),
-	constraint uq_aluno_email unique (email)
+	constraint uq_aluno_email unique (email),
 	constraint ck_status_aluno check (status_academico IN ('ATIVO', 'INATIVO', 'TRANCADO', 'FORMADO'))
 	-- ATUALIZEI o código e defini que os status do aluno no sistema serão esses, para niguém escrever errado.
 );
@@ -55,7 +55,7 @@ create table matricula (
 	constraint ck_nota_valida check (nota_final >= 0 and nota_final <= 100),
 	constraint ck_frequencia_valida check (frequencia >= 0 and frequencia <= 100),
 	constraint uq_aluno_turma unique (id_turma, mat_aluno),
-	constraint ck_situacao_valida check (situacao in ('CURSANDO', 'APROVADO', 'REPROVADO', 'TRANCADO'))
+	constraint ck_situacao_valida check (situacao in ('CURSANDO', 'APROVADO', 'REPROVADO', 'TRANCADO')),
 	
 	-- chaves estrangeiras
 	constraint fk_matricula_turma foreign key (id_turma)
@@ -153,6 +153,5 @@ join curso c on t.cod_curso = c.codigo
 where a.matricula = 'A0001';
 
 
--- para rodar cole o código no DBEAVER, faça a conexão com o PostgreSQL e dê um ALT + X.
-
+-- Dê um Alt + X para rodar tudo.
 

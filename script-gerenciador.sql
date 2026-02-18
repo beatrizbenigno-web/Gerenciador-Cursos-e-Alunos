@@ -1,3 +1,4 @@
+
 create table curso (
 	codigo VARCHAR(20) not null,
 	nome VARCHAR(150) not null,
@@ -5,7 +6,6 @@ create table curso (
 	
 	constraint pk_curso primary key (codigo),
 	constraint ck_carga_horaria check (carga_horaria > 0)
-	
 	-- usamos constraint para que a chave seja gerada com o nome que atribuimos a ela. 
 	-- assim futuramente caso ocorra algum erro saberei onde foi.
 	-- // o check tem a função de garantir que a carga horária seja sempre acima de 0.
@@ -21,6 +21,7 @@ create table aluno (
 	
 	constraint pk_aluno primary key (matricula),
 	constraint uq_aluno_email unique (email),
+	-- o UNIQUE tem a função de garantir que o email seja único, para evitar que haja dois alunos com o mesmo email, o que poderia causar confusão.
 	constraint ck_status_aluno check (status_academico IN ('ATIVO', 'INATIVO', 'TRANCADO', 'FORMADO'))
 	-- ATUALIZEI o código e defini que os status do aluno no sistema serão esses, para niguém escrever errado.
 );
@@ -34,11 +35,14 @@ create table turma (
 	
 	constraint pk_turma primary key (id_turma),
 	constraint ck_vagas check (vagas_totais >= 0),
+	-- aqui o constraint delimita que as vagas totais tem que ser maior ou igual a zero.
 	
 	constraint fk_turma_curso foreign key (cod_curso)
 		references curso (codigo)
 		on update cascade 
 		on delete restrict
+		-- o update cascade e o delete restrict tem a função de garantir a integridade referencial, 
+		-- ou seja, se um curso for atualizado ou deletado, as turmas relacionadas a ele também serão atualizadas ou não poderão ser deletadas, respectivamente.
 );
 
 create table matricula (
@@ -53,9 +57,12 @@ create table matricula (
 	
 	-- regras de negócio
 	constraint ck_nota_valida check (nota_final >= 0 and nota_final <= 100),
+	-- a regra de negócio para a nota é que ela tem que ser entre 0 e 100, então o check garante isso.
 	constraint ck_frequencia_valida check (frequencia >= 0 and frequencia <= 100),
+	-- para a frequência é que ela tem que ser entre 0 e 100 também.
 	constraint uq_aluno_turma unique (id_turma, mat_aluno),
-	constraint ck_situacao_valida check (situacao in ('CURSANDO', 'APROVADO', 'REPROVADO', 'TRANCADO')),
+	constraint ck_situacao_valida check (situacao in ('CURSANDO', 'APROVADO', 'REPROVADO', 'TRANCADO'))
+	-- para a situação é que ela tem que ser uma dessas opções, para evitar que alguém escreva errado e acabe com dados inconsistentes.
 	
 	-- chaves estrangeiras
 	constraint fk_matricula_turma foreign key (id_turma)
@@ -153,5 +160,4 @@ join curso c on t.cod_curso = c.codigo
 where a.matricula = 'A0001';
 
 
--- Dê um Alt + X para rodar tudo.
-
+-- para rodar cole o código no DBEAVER, faça a conexão com o PostgreSQL e dê um ALT + X.

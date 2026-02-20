@@ -9,6 +9,7 @@ create table curso (
 	-- usamos constraint para que a chave seja gerada com o nome que atribuimos a ela. 
 	-- assim futuramente caso ocorra algum erro saberei onde foi.
 	-- // o check tem a função de garantir que a carga horária seja sempre acima de 0.
+	
 );
 
 create table aluno (
@@ -32,6 +33,8 @@ create table turma (
 	periodo VARCHAR(10) not null,
 	dias_horarios json not null,
 	vagas_totais int not null default 0,
+	-- o JSON tem a função de armazenar os dias e horários das aulas, para que seja possível ter uma estrutura mais flexível e fácil de consultar.
+	-- o DEFAULT tem a função de atribuir automaticamente o número de vagas, caso niguém escreva.
 	
 	constraint pk_turma primary key (id_turma),
 	constraint ck_vagas check (vagas_totais >= 0),
@@ -52,16 +55,21 @@ create table matricula (
 	nota_final DECIMAL(5, 2) default 0.00,
 	frequencia INT default 0,
 	situacao VARCHAR(20) default 'CURSANDO',
-	
+	-- o DECIMAL tem a função de armazenar a nota final com duas casas decimais, para que seja possível ter uma precisão maior nas notas.//
+	-- o DEFAULT tem a função de atribuir automaticamente a nota final, frequência e situação,
+	-- caso niguém escreva, para que o sistema funcione mesmo que os dados não sejam preenchidos.//
+	-- o default da situação é CURSANDO, para que quando o aluno for matriculado ele já fique com esse status, 
+	-- e depois possa ser atualizado para APROVADO ou REPROVADO, por exemplo.
+
 	constraint pk_matricula primary key (id_matricula),
 	
 	-- regras de negócio
 	constraint ck_nota_valida check (nota_final >= 0 and nota_final <= 100),
-	-- a regra de negócio para a nota é que ela tem que ser entre 0 e 100, então o check garante isso.
+	-- a nota tem que ser entre 0 e 100, então o check garante isso.
 	constraint ck_frequencia_valida check (frequencia >= 0 and frequencia <= 100),
 	-- para a frequência é que ela tem que ser entre 0 e 100 também.
 	constraint uq_aluno_turma unique (id_turma, mat_aluno),
-	constraint ck_situacao_valida check (situacao in ('CURSANDO', 'APROVADO', 'REPROVADO', 'TRANCADO'))
+	constraint ck_situacao_valida check (situacao in ('CURSANDO', 'APROVADO', 'REPROVADO', 'TRANCADO')),
 	-- para a situação é que ela tem que ser uma dessas opções, para evitar que alguém escreva errado e acabe com dados inconsistentes.
 	
 	-- chaves estrangeiras

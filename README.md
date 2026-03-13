@@ -9,6 +9,7 @@ Desenvolvido como requisito para a disciplina de Banco de Dados.
 - **Linguagem:** SQL 
 - **SGBD:** PostgreSQL
 - **Ferramenta de Gerenciamento:** DBeaver
+- **Ambiente de testes:** Google Colaboratory (para fins acadêmicos)
 
 ## Estrutura do Banco de Dados
 
@@ -28,7 +29,17 @@ O sistema é composto por 4 tabelas principais relacionais:
 - Automação: Situação da matrícula inicia automaticamente como 'CURSANDO'.
 - Lista Permitida: A coluna `situacao` aceita apenas: 'CURSANDO', 'APROVADO', 'REPROVADO', 'TRANCADO'.
 
-## Como Executar o Projeto
+A maneira mais rápida e fácil de testar a aplicação é através do ambiente preparado na nuvem, que dispensa instalações locais.
+
+### Via Google Colab (Recomendado) ☁️
+
+1. Clique no link abaixo para abrir o notebook interativo:
+   👉 ****https://colab.research.google.com/drive/199RUbBsv5MOi-LWkykLgE9uijyoj0Sh5?usp=sharing****
+2. No menu superior, vá em `Ambiente de execução` > `Executar tudo`.
+3. O ambiente instalará o PostgreSQL, criará as tabelas e rodará todos os testes de CRUD automaticamente.
+
+
+## Como Executar o Projeto 
 
 Para testar este banco de dados, você precisará de uma ferramenta SQL (recomendado **DBeaver**).
 

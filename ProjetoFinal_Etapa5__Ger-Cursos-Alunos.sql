@@ -1,5 +1,3 @@
-
-
 create table curso (
 	codigo VARCHAR(20) not null,
 	nome VARCHAR(150) not null,
@@ -310,3 +308,4 @@ where a.matricula = 'A0001';
 
 
 -- para rodar cole o código no DBEAVER, faça a conexão com o PostgreSQL e dê um ALT + X.
+

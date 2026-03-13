@@ -36,7 +36,7 @@ A maneira mais rápida e fácil de testar a aplicação é através do ambiente 
 ### Via Google Colab ☁️
 
 1. Clique no link abaixo para abrir o notebook interativo:
-   👉 ****https://colab.research.google.com/drive/199RUbBsv5MOi-LWkykLgE9uijyoj0Sh5?usp=sharing****
+   - ****https://colab.research.google.com/drive/199RUbBsv5MOi-LWkykLgE9uijyoj0Sh5?usp=sharing****
 2. No menu superior, vá em `Ambiente de execução` > `Executar tudo`.
 3. O ambiente instalará o PostgreSQL, criará as tabelas e rodará todos os testes de CRUD automaticamente.
 

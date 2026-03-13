@@ -31,7 +31,7 @@ O sistema é composto por 4 tabelas principais relacionais:
 
 A maneira mais rápida e fácil de testar a aplicação é através do ambiente preparado na nuvem, que dispensa instalações locais.
 
-### Via Google Colab (Recomendado) ☁️
+### Via Google Colab ☁️
 
 1. Clique no link abaixo para abrir o notebook interativo:
    👉 ****https://colab.research.google.com/drive/199RUbBsv5MOi-LWkykLgE9uijyoj0Sh5?usp=sharing****

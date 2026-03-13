@@ -40,6 +40,7 @@ A maneira mais rápida e fácil de testar a aplicação é através do ambiente 
 2. No menu superior, vá em `Ambiente de execução` > `Executar tudo`.
 3. O ambiente instalará o PostgreSQL, criará as tabelas e rodará todos os testes de CRUD automaticamente.
 
+### O resultado deverá sair assim:
 
 ## Como Executar o Projeto 
 

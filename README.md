@@ -29,6 +29,7 @@ O sistema é composto por 4 tabelas principais relacionais:
 - Automação: Situação da matrícula inicia automaticamente como 'CURSANDO'.
 - Lista Permitida: A coluna `situacao` aceita apenas: 'CURSANDO', 'APROVADO', 'REPROVADO', 'TRANCADO'.
 
+##Testes
 A maneira mais rápida e fácil de testar a aplicação é através do ambiente preparado na nuvem, que dispensa instalações locais.
 
 ### Via Google Colab ☁️
